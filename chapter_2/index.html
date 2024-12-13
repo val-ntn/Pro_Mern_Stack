@@ -1,11 +1,27 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <!-- 1. Remove type="text/babel" from the script. What happens when you load index.
+            html? Can you explain why? Put back type="text/babel" but remove the Babel
+            JavaScript library. What happens now?
+
+          - Antort 1: (Uncought SyntaxError: unexpected Token <), JSX syntax wird nicht unterstützt.
+
+        2. We used the minified version of Babel, but not for React and ReactDOM. Can you
+            guess why? Switch to the production minified version and introduce a runtime
+            error in React (check out the unpkg.com website for the names of the production
+            versions of these libraries). For example, introduce a typo in the ID of the content
+            node so there is no place to mount the component. What happens?
+            
+          - Antwort 2: (Uncought error: minified React error #200), Warnung: You are Using the in-Browser transformer,   -->
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <script src="https://unpkg.com/react@16/umd/react.development.js"></script>
-    <script src="https://unpkg.com/react-dom@16/umd/react-dom.development.js"></script>
+    <!--<script src="https://unpkg.com/react@16/umd/react.development.js"></script>
+    <script src="https://unpkg.com/react-dom@16/umd/react-dom.development.js"></script>-->
+    <script src="https://unpkg.com/react@16/umd/react.production.min.js"></script>
+    <script src="https://unpkg.com/react-dom@16/umd/react-dom.production.min.js"></script>
+
     <script src="https://unpkg.com/@babel/standalone@7/babel.min.js"></script>
     <style>
         .blau {
@@ -16,7 +32,6 @@
 <body>
     <div id="content"></div>
     <script type="text/babel">
-        //const element = React.createElement('div', {title: 'Outer div'}, React.createElement('h1', { className: 'blau' }, 'Hello World!'));
         const element = (
             <div title="Outer div">
                 <h1>Hello World!</h1>
